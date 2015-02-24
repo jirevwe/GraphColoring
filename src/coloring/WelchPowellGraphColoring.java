@@ -31,7 +31,6 @@ public class WelchPowellGraphColoring {
 		Color.RED,
 		Color.BLUE,
 		Color.GREEN,
-		Color.DARK_GRAY,
 		Color.YELLOW,
 		Color.GRAY,
 		Color.CYAN,

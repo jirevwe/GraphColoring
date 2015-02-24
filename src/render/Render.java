@@ -45,27 +45,29 @@ public class Render extends JFrame {
 	@Override
 	public void paint(Graphics g)
 	{
+		
 		int vertexCount = graph.getVertices().size();
-		
-		g.setColor(Color.BLACK);
-		for (int i = 0; i < vertexCount; i++)
-	    {
-			g.drawString(graph.getVertices().get(i).getVertexName(), graph.getVertices().get(i).getPosX(), graph.getVertices().get(i).getPosY());
-	    }
-		
-		for (int i = 0; i < vertexCount; i++)
-	    {
-			g.setColor(WelchPowellGraphColoring.COLORS[graph.getVertices().get(i).getColor()]);
-			g.fillArc(graph.getVertices().get(i).getPosX(), graph.getVertices().get(i).getPosY(), 10, 10, 0, 360);
-			
-	    }
-		
 		int edgeCount = graph.getEdges().size();
 		
 		g.setColor(Color.BLACK);
+		g.fillRect(0, 0, width, height);
+		
+		g.setColor(Color.WHITE);
 		for(int i = 0;i < edgeCount;i++)
 		{
 			g.drawLine(graph.getEdges().get(i).getFromVertex().getPosX(), graph.getEdges().get(i).getFromVertex().getPosY(), graph.getEdges().get(i).getToVertex().getPosX(), graph.getEdges().get(i).getToVertex().getPosY());
 		}
+		
+		for (int i = 0; i < vertexCount; i++)
+	    {
+			g.setColor(WelchPowellGraphColoring.COLORS[graph.getVertices().get(i).getColor()]);
+			g.fillArc(graph.getVertices().get(i).getPosX() - 15, graph.getVertices().get(i).getPosY() - 15, 30, 30, 0, 360);
+	    }		
+		
+		g.setColor(Color.WHITE);
+		for (int i = 0; i < vertexCount; i++)
+	    {
+			g.drawString(graph.getVertices().get(i).getVertexName(), graph.getVertices().get(i).getPosX() - 15, graph.getVertices().get(i).getPosY() - 15);
+	    }
 	}
 }
