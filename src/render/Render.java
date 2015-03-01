@@ -13,11 +13,8 @@ import coloring.WelchPowellGraphColoring;
 public class Render extends JFrame {
 
 	private Graph graph;
-	
 	private int width;
-
 	private int height; 
-	
 	private int polysize;
 	
 	public Render(Graph theGraph, int theViewportWidth, int theViewportHeight, int theGraphSize)
@@ -27,6 +24,7 @@ public class Render extends JFrame {
 		height = theViewportHeight;
 		polysize = theGraphSize;
 		
+		setTitle("Graph Coloring Using Welch-Powell's Algorithm");
 		setVisible(true);
 		setSize(width, height);
 		setResizable(false);
@@ -45,7 +43,6 @@ public class Render extends JFrame {
 	@Override
 	public void paint(Graphics g)
 	{
-		
 		int vertexCount = graph.getVertices().size();
 		int edgeCount = graph.getEdges().size();
 		
@@ -62,12 +59,14 @@ public class Render extends JFrame {
 	    {
 			g.setColor(WelchPowellGraphColoring.COLORS[graph.getVertices().get(i).getColor()]);
 			g.fillArc(graph.getVertices().get(i).getPosX() - 15, graph.getVertices().get(i).getPosY() - 15, 30, 30, 0, 360);
-	    }		
+	    }	
 		
 		g.setColor(Color.WHITE);
 		for (int i = 0; i < vertexCount; i++)
 	    {
 			g.drawString(graph.getVertices().get(i).getVertexName(), graph.getVertices().get(i).getPosX() - 15, graph.getVertices().get(i).getPosY() - 15);
 	    }
+		
+		g.drawString("The chromatic Number is: " + WelchPowellGraphColoring.CHROMATIC_NUM, 10, height - 10);
 	}
 }

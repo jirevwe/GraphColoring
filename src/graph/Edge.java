@@ -48,6 +48,6 @@ public class Edge {
     @Override
     public String toString()
     {
-        return fromVertex.getVertexName() + "|" +  toVertex.getVertexName();
+        return fromVertex.getVertexName() + toVertex.getVertexName();
     }
 }

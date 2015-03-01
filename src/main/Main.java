@@ -39,9 +39,7 @@ public class Main {
         
         int returnVal = fileChooser.showOpenDialog(new JFrame());
         if(returnVal == JFileChooser.APPROVE_OPTION && fileChooser.getSelectedFile().getAbsolutePath().endsWith(".graph"))
-        {
-        	System.out.println("You chose to open this file: " + fileChooser.getSelectedFile().getAbsolutePath() + "\n");
-        
+        {        
 	        /**
 	         * create the graph
 	         */
@@ -53,16 +51,9 @@ public class Main {
 	        HashMap<String, Integer> g = w.orderVerticesByDegree(testGraph);
 	        
 	        /**
-	         * color the vertices and save them in a new structure
+	         * color the vertices
 	         */
-	        HashMap<String, String> coloredGraph = w.colorGraph(testGraph, g);
-	        
-			System.out.printf("THE CHOMATIC NUMBER OF THE GRAPH IS: %d \n", WelchPowellGraphColoring.CHROMATIC_NUM);
-	        System.out.printf("Vertex  Colour \n");
-	        
-	        coloredGraph.forEach((String vertex, String colour) -> {
-	            System.out.printf("%3s %10s \n", vertex, WelchPowellGraphColoring.COLORS[Integer.parseInt(colour)]);
-	        });
+	        w.colorGraph(testGraph, g);
 	        
 	        new Render(testGraph, 1000, 700, 300);
         }

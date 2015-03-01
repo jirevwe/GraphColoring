@@ -92,7 +92,7 @@ public class WelchPowellGraphColoring {
             vertexDegree.put(vertex.getVertexName(), g.getDegreeOfVertex(vertex.getVertexName()));
         });
         
-        return MapUtil.sortMapByValue(vertexDegree);
+        return MapUtil.sortByValue(vertexDegree);
     }
     
     /**
@@ -145,11 +145,11 @@ public class WelchPowellGraphColoring {
     	try (BufferedReader reader = Files.newBufferedReader(file.toPath())) {
     	    String line = null;
     	    while ((line = reader.readLine()) != null) {
-    	        if(line.startsWith("Vertices"))
+    	        if(line.startsWith("V"))
     	        {
     	        	vertexLine = line.substring(10);
     	        }
-    	        if(line.startsWith("Edges"))
+    	        if(line.startsWith("E"))
     	        {
     	        	edgesLine = line.substring(6);
     	        }
